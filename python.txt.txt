@@ -1,0 +1,216 @@
+ -- ## GROUP BY Questions
+ -- 1. Display the number of employees in each department.
+ select department,count(employee_name) from employees_2 group by department;
++------------+----------------------+
+| department | count(employee_name) |
++------------+----------------------+
+| IT         |                    3 |
+| HR         |                    3 |
+| Finance    |                    2 |
+| Marketing  |                    2 |
++------------+----------------------+
+
+
+ -- 2. Find the total salary paid by each department.
+ select department,sum(salary) from employees_2 group by department;
++------------+-------------+
+| department | sum(salary) |
++------------+-------------+
+| IT         |   225000.00 |
+| HR         |   143000.00 |
+| Finance    |   155000.00 |
+| Marketing  |   115000.00 |
++------------+-------------+
+
+ -- 3. Find the average salary of each department.
+ select department,avg(salary) from employees_2 group by department;
++------------+--------------+
+| department | avg(salary)  |
++------------+--------------+
+| IT         | 75000.000000 |
+| HR         | 47666.666667 |
+| Finance    | 77500.000000 |
+| Marketing  | 57500.000000 |
++------------+--------------+
+
+ -- 4. Display the highest salary in each department.
+ select department,max(salary) from employees_2 group by department;
++------------+-------------+
+| department | max(salary) |
++------------+-------------+
+| IT         |    90000.00 |
+| HR         |    50000.00 |
+| Finance    |    80000.00 |
+| Marketing  |    60000.00 |
++------------+-------------+
+
+ -- 5. Display the lowest salary in each department.
+ select department,min(salary) from employees_2 group by department;
++------------+-------------+
+| department | min(salary) |
++------------+-------------+
+| IT         |    65000.00 |
+| HR         |    45000.00 |
+| Finance    |    75000.00 |
+| Marketing  |    55000.00 |
++------------+-------------+
+
+ -- 6. Find the salary difference (MAX - MIN) for each department.
+ select department,max(salary)-min(salary) from employees_2 group by department;
++------------+-------------------------+
+| department | max(salary)-min(salary) |
++------------+-------------------------+
+| IT         |                25000.00 |
+| HR         |                 5000.00 |
+| Finance    |                 5000.00 |
+| Marketing  |                 5000.00 |
++------------+-------------------------+
+
+ -- 7. Display the total number of departments.
+ select department,count(department) as count from employees_2 group by department;
++------------+-------+
+| department | count |
++------------+-------+
+| IT         |     3 |
+| HR         |     3 |
+| Finance    |     2 |
+| Marketing  |     2 |
++------------+-------+
+4 rows in set (0.0005 sec)
+
+ -- 8. Find the total salary and average salary for each department.
+ select department,avg(salary),sum(salary) from employees_2 group by department;
++------------+--------------+-------------+
+| department | avg(salary)  | sum(salary) |
++------------+--------------+-------------+
+| IT         | 75000.000000 |   225000.00 |
+| HR         | 47666.666667 |   143000.00 |
+| Finance    | 77500.000000 |   155000.00 |
+| Marketing  | 57500.000000 |   115000.00 |
++------------+--------------+-------------+
+
+ -- 9. Display each department along with its employee count and total salary.
+ select department,count(employee_name),sum(salary) from employees_2 group  by department;
++------------+----------------------+-------------+
+| department | count(employee_name) | sum(salary) |
++------------+----------------------+-------------+
+| IT         |                    3 |   225000.00 |
+| HR         |                    3 |   143000.00 |
+| Finance    |                    2 |   155000.00 |
+| Marketing  |                    2 |   115000.00 |
++------------+----------------------+-------------+
+
+ -- 10. Sort the departments based on their average salary in descending order.
+ select department,avg(salary) as avg_salary from employees_2 group by department  order by avg_salary desc;
++------------+--------------+
+| department | avg_salary   |
++------------+--------------+
+| Finance    | 77500.000000 |
+| IT         | 75000.000000 |
+| Marketing  | 57500.000000 |
+| HR         | 47666.666667 |
++------------+--------------+
+
+ select department,avg(salary) as avg_salary from employees_2 group by department  order by avg_salary asc;
++------------+--------------+
+| department | avg_salary   |
++------------+--------------+
+| HR         | 47666.666667 |
+| Marketing  | 57500.000000 |
+| IT         | 75000.000000 |
+| Finance    | 77500.000000 |
++------------+--------------+
+
+
+ -- ## HAVING Questions
+ -- 11. Display departments having more than 2 employees.
+ select department,count(employee_name) as c_emp from employees_2 group by department having c_emp>2;
++------------+-------+
+| department | c_emp |
++------------+-------+
+| IT         |     3 |
+| HR         |     3 |
++------------+-------+
+
+ -- 12. Display departments whose average salary is greater than 60,000.
+ select department,avg(salary) as avg_salary from employees_2 group by department having avg_salary>60000;
++------------+--------------+
+| department | avg_salary   |
++------------+--------------+
+| IT         | 75000.000000 |
+| Finance    | 77500.000000 |
++------------+--------------+
+
+ -- 13. Display departments whose total salary is greater than 1,80,000.
+ select department,sum(salary) as sum_salary from employees_2 group by department having sum_salary>180000;
++------------+------------+
+| department | sum_salary |
++------------+------------+
+| IT         |  225000.00 |
++------------+------------+
+
+ -- 14. Display departments whose maximum salary is greater than 70,000.
+ select department,max(salary) as max_salary from employees_2 group by department having max_salary>70000;
++------------+------------+
+| department | max_salary |
++------------+------------+
+| IT         |   90000.00 |
+| Finance    |   80000.00 |
++------------+------------+
+
+ -- 15. Display departments whose minimum salary is less than 50,000.
+ select department,min(salary) as min_salary from employees_2 group by department having min_salary<50000;
++------------+------------+
+| department | min_salary |
++------------+------------+
+| HR         |   45000.00 |
++------------+------------+
+1 row in set (0.0004 sec)
+
+ -- 16. Display departments having exactly 3 employees.
+ (0.0002 sec)
+ select department,count(employee_name) as employ from employees_2 group by department having employ =3;
++------------+--------+
+| department | employ |
++------------+--------+
+| IT         |      3 |
+| HR         |      3 |
++------------+--------+
+
+-- 17. Display departments having fewer than 3 employees.
+select department,count(*) as employee from employees_2 group by department having count(*)<3;
++------------+----------+
+| department | employee |
++------------+----------+
+| Finance    |        2 |
+| Marketing  |        2 |
++------------+----------+
+
+ -- 18. Display departments whose average salary is between 50,000 and 70,000.
+ (0.0003 sec)
+ select department , avg(salary) from employees_2 group by department having avg(salary) between 50000 and 70000;
++------------+--------------+
+| department | avg(salary)  |
++------------+--------------+
+| Marketing  | 57500.000000 |
++------------+--------------+
+1 row in set (0.0005 sec)
+
+-- 19. Display departments whose total salary is less than 1,50,000.
+select department,sum(salary) from employees_2 group by department having sum(salary)<150000;
++------------+-------------+
+| department | sum(salary) |
++------------+-------------+
+| HR         |   143000.00 |
+| Marketing  |   115000.00 |
++------------+-------------+
+
+
+-- 20. Display departments where the highest salary is at least 80,000.
+select department,max(salary) from employees_2 group by department having max(salary)>=80000;
++------------+-------------+
+| department | max(salary) |
++------------+-------------+
+| IT         |    90000.00 |
+| Finance    |    80000.00 |
++------------+-------------+

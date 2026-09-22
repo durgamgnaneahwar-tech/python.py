@@ -1,0 +1,11 @@
++---------------+-------------------------------------+------+-----+---------+-------+
+| Field         | Type                                | Null | Key | Default | Extra |
++---------------+-------------------------------------+------+-----+---------+-------+
+| id            | int                                 | YES  |     | NULL    |       |
+| name          | varchar(20)                         | YES  |     | NULL    |       |
+| mobile_number | bigint                              | YES  |     | NULL    |       |
+| email         | varchar(20)                         | YES  |     | NULL    |       |
+| gender        | enum('m','f')                       | YES  |     | NULL    |       |
+| course        | set('python','cs','it','java','ds') | YES  |     | NULL    |       |
++---------------+-------------------------------------+------+-----+---------+-------+
+6 rows in set (0.0143 sec)

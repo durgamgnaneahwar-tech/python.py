@@ -1,0 +1,10 @@
+dev-requirements.txt
+pyproject.toml
+student_package/__init__.py
+student_package/__main__.py
+student_package.egg-info/PKG-INFO
+student_package.egg-info/SOURCES.txt
+student_package.egg-info/dependency_links.txt
+student_package.egg-info/requires.txt
+student_package.egg-info/top_level.txt
+tests/test_student_package.py

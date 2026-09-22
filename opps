@@ -1,0 +1,260 @@
+# ============================================================
+# PYTHON OOP ASSIGNMENT
+# ============================================================
+
+
+# 1. Student
+# Create a Student class with attributes name, age, and marks.
+# Create an object and display all the details.
+
+class Student:
+    def __init__(self, name, age, marks):
+        self.name = name
+        self.age = age
+        self.marks = marks
+
+    def display_details(self):
+        print("Name:", self.name)
+        print("Age:", self.age)
+        print("Marks:", self.marks)
+
+
+s1 = Student("Gnaneshwar", 22, 85)
+
+print("----- 1. Student -----")
+s1.display_details()
+
+
+# ============================================================
+# 2. Car
+# Create a Car class with attributes brand and model.
+# Create two objects with different values and display details.
+
+class Car:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+
+    def display_details(self):
+        print("Brand:", self.brand)
+        print("Model:", self.model)
+
+
+c1 = Car("Toyota", "Fortuner")
+c2 = Car("BMW", "X5")
+
+print("\n----- 2. Car 1 -----")
+c1.display_details()
+
+print("\n----- 2. Car 2 -----")
+c2.display_details()
+
+
+# ============================================================
+# 3. Calculator
+# Create Calculator class with add(), subtract(),
+# multiply(), and divide().
+# Take two numbers from the user and perform all operations.
+
+class Calculator:
+    def add(self, a, b):
+        return a + b
+
+    def subtract(self, a, b):
+        return a - b
+
+    def multiply(self, a, b):
+        return a * b
+
+    def divide(self, a, b):
+        return a / b
+
+
+print("\n----- 3. Calculator -----")
+
+a = float(input("Enter first number: "))
+b = float(input("Enter second number: "))
+
+calc = Calculator()
+
+print("Addition:", calc.add(a, b))
+print("Subtraction:", calc.subtract(a, b))
+print("Multiplication:", calc.multiply(a, b))
+
+if b != 0:
+    print("Division:", calc.divide(a, b))
+else:
+    print("Division: Cannot divide by zero")
+
+
+# ============================================================
+# 4. Rectangle
+# Create Rectangle class with length and breadth.
+# Create methods area() and perimeter().
+
+class Rectangle:
+    def __init__(self, length, breadth):
+        self.length = length
+        self.breadth = breadth
+
+    def area(self):
+        return self.length * self.breadth
+
+    def perimeter(self):
+        return 2 * (self.length + self.breadth)
+
+
+r1 = Rectangle(10, 5)
+
+print("\n----- 4. Rectangle -----")
+print("Area:", r1.area())
+print("Perimeter:", r1.perimeter())
+
+
+# ============================================================
+# 5. Employee
+# Create Employee class with name, salary, department.
+# Create display_details() method.
+
+class Employee:
+    def __init__(self, name, salary, department):
+        self.name = name
+        self.salary = salary
+        self.department = department
+
+    def display_details(self):
+        print("Name:", self.name)
+        print("Salary:", self.salary)
+        print("Department:", self.department)
+
+
+e1 = Employee("Ravi", 60000, "IT")
+
+print("\n----- 5. Employee -----")
+e1.display_details()
+
+
+# ============================================================
+# 6. BankAccount
+# Create BankAccount class with an initial balance.
+# Create deposit() and withdraw().
+# Display updated balance after each operation.
+
+class BankAccount:
+    def __init__(self, balance):
+        self.balance = balance
+
+    def deposit(self, amount):
+        self.balance = self.balance + amount
+        print("Deposit:", amount)
+        print("Updated Balance:", self.balance)
+
+    def withdraw(self, amount):
+        if amount <= self.balance:
+            self.balance = self.balance - amount
+            print("Withdraw:", amount)
+            print("Updated Balance:", self.balance)
+        else:
+            print("Insufficient Balance")
+
+
+account = BankAccount(10000)
+
+print("\n----- 6. Bank Account -----")
+
+account.deposit(5000)
+account.withdraw(3000)
+
+
+# ============================================================
+# 7. Student Grade
+# Create a Student class with calculate_grade() that returns:
+#
+# 90-100  -> A
+# 75-89   -> B
+# 60-74   -> C
+# 40-59   -> D
+# Below 40 -> F
+
+class StudentGrade:
+    def __init__(self, marks):
+        self.marks = marks
+
+    def calculate_grade(self):
+        if self.marks >= 90 and self.marks <= 100:
+            return "A"
+        elif self.marks >= 75 and self.marks < 90:
+            return "B"
+        elif self.marks >= 60 and self.marks < 75:
+            return "C"
+        elif self.marks >= 40 and self.marks < 60:
+            return "D"
+        elif self.marks >= 0 and self.marks < 40:
+            return "F"
+
+
+student = StudentGrade(85)
+
+print("\n----- 7. Student Grade -----")
+print("Marks:", student.marks)
+print("Grade:", student.calculate_grade())
+
+
+# ============================================================
+# 8. Person
+# Create Person class with introduce() that prints name,
+# age, and city.
+# Create three different objects and call introduce()
+# for each.
+
+class Person:
+    def __init__(self, name, age, city):
+        self.name = name
+        self.age = age
+        self.city = city
+
+    def introduce(self):
+        print("Name:", self.name)
+        print("Age:", self.age)
+        print("City:", self.city)
+
+
+person1 = Person("Ravi", 25, "Hyderabad")
+person2 = Person("Sneha", 22, "Bangalore")
+person3 = Person("Kiran", 28, "Chennai")
+
+print("\n----- 8. Person 1 -----")
+person1.introduce()
+
+print("\n----- 8. Person 2 -----")
+person2.introduce()
+
+print("\n----- 8. Person 3 -----")
+person3.introduce()
+
+
+# ============================================================
+# 9. Product
+# Create Product class with name, price, quantity.
+# Create total_cost() that calculates price * quantity
+# and displays the result.
+
+class Product:
+    def __init__(self, name, price, quantity):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+
+    def total_cost(self):
+        total = self.price * self.quantity
+
+        print("Product Name:", self.name)
+        print("Price:", self.price)
+        print("Quantity:", self.quantity)
+        print("Total Cost:", total)
+
+
+product = Product("Laptop", 50000, 2)
+
+print("\n----- 9. Product -----")
+product.total_cost()
